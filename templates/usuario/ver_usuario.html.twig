@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container col-4">
+    <div class="card">
+        <h3 class="mt-3">Detalle de usuario</h3>
+        <div class="card-body mt-3">
+            <img src="{{ asset('/imagenes/') }}/{{ usuario.foto }}" width="100px" height="100px">
+            <h4 class="card-title">Nombre</h4>
+            <p class="card-text">{{usuario.nombre}}</p>
+            <h4 class="card-title">Apellidos</h4>
+            <p class="card-text">{{usuario.apellidos}}</p>
+            <h4 class="card-title">Email</h4>
+            <p class="card-text">{{usuario.email}}</p>
+            <h4 class="card-title">Rol</h4>
+            {% for role in usuario.roles %}
+                <p>{{ role }}</p>
+            {% endfor %}
+            <h4 class="card-title">Telefono</h4>
+            <p class="card-text">{{usuario.telefono}}</p>
+            <a href="/usuarios" class="btn btn-primary btn-block" role="button">Volver</a>
+        </div>
+    </div>
+    </div>
+{% endblock %}

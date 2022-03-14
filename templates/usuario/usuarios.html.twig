@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5 justify-content-center">
+                <h1 style="color:Black">Usuarios</h1>
+    
+        <div style="clear:both"></div>
+                    {%  if app.user %}
+                    <a href="{{ path('insertar_usuario') }}" class="btn btn-primary m-2" role="button">Insertar usuario</a>
+                    {% endif %}
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
+
+                    {% for usuario in usuarios %}
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="{{ asset('/imagenes/') }}/{{ usuario.foto }}" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">{{usuario.nombre}}</h5>
+                                        <!-- Product price-->
+                                        {{usuario.apellidos}}
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                 
+                               
+                               
+                               <div class="text-center">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-cog fa-1x" aria-hidden="true"></i> 
+
+                                        </a> 
+                                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                            <li><a class="dropdown-item" href="{{  path('ver_usuario',{id:usuario.id}) }}">Ver Detalles del Usuario</a></li>
+                                            <li><a class="dropdown-item" href="{{ path('borrar_usuario',{id:usuario.id}) }}">Borrar Usuario</a></li>
+                                        </ul>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                     {% else %}
+                     No se ha encontrado ningún usuario.
+                     {% endfor %}
+                   
+
+
+                </div>
+                   
+            </div>
+        </section>
+    
+    
+{% endblock %}

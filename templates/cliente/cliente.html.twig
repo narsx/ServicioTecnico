@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+   
+    <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h3 class="text-center m-4">Clientes en el sistema</h3><hr>
+     {%  if app.user %}
+        <a href="{{ path('nuevoCliente') }}" class="btn btn-primary" role="button">Insertar cliente</a>
+    {% endif %}
+    {% for cliente in clientes %}
+        <div style="clear:both"></div>
+   
+    
+          <!-- Section-->
+        
+                
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                 <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">Nombre: {{cliente.nombre}}</h5>
+                                        <!-- Product price-->
+                                        Identificador: {{cliente.id}}
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-cog fa-1x" aria-hidden="true"></i> 
+                                        </a> 
+                                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                            <li><a class="dropdown-item" href="{{  path('verCliente',{id:cliente.id}) }}">Ver detalles de cliente</a></li>
+                                            <li><a class="dropdown-item" href="{{ path('borrarCliente',{id:cliente.id}) }}">Borrar cliente</a></li>
+                                        </ul>
+                                    </div>
+                                 
+                                </div>
+                               
+                               
+                            </div>
+                        </div>
+                </div>
+    
+    {% else %}
+        No se ha encontrado ningún cliente.
+    {% endfor %}
+                </div>
+    </section>  <hr>
+{% endblock %}

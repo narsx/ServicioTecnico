@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Incidencias{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container col-4 justify-content-center"> 
+    <h3 class="mt-4 text-center">Listado de Incidencias</h3>
+    <table class="table text-center">
+    <thead>
+        <tr>
+            <th>Id: Incidencia</th>
+            <th>Id: Usuario</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    {% for incidencia in incidencias %}
+         <tr>
+   
+    <td>{{ incidencia.id }}</td>
+    <td>{{ incidencia.idusuario.nombre }}</td>
+    <td>{{ incidencia.titulo }}</td>
+    <td>{{ incidencia.estado }}</td>
+     <td>
+         <div class="row">
+               <a class="btn btn-info m-1" href="{{  path('ver_incidencia',{id:incidencia.id}) }}">Ver Incidencia</a>
+        <a class="btn btn-danger m-1" href="{{ path('borrar_incidencia',{id:incidencia.id}) }}">Borrar Incidencia</a>
+  
+         </div>
+        </td>
+        <!--<div class="incidencia">
+            <h4><a href="{{  path('ver_incidencia',{id:incidencia.id}) }}">{{ incidencia.titulo }}</a>
+                <a href="{{ path('borrar_incidencia',{id:incidencia.id}) }}">X</a></h4>
+        </div>-->
+        </tr>
+         {% else %}
+        No se ha encontrado ninguna incidencia
+     
+    {% endfor %}
+   
+    </tbody>
+    </table>
+    <div style="clear:both"></div>
+    {%  if app.user %}
+        <a href="{{ path('insertar_incidencia') }}" class="btn btn-primary" role="button">Insertar Incidencia</a>
+    {% endif %}
+    </div>
+{% endblock %}

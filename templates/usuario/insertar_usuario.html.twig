@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="card" style="height: auto; color: Black;">
+        <div class="card-body">
+        
+                   {{ form_start(form) }}
+    <div class="container col-3">
+        <!---heading-->
+        <header class="heading"><h3 class="text-center"> Registro de Usuario</h3></header><hr></hr>
+        
+        <!---Form starting--> 
+        {{ form_errors(form) }}
+        <div class="container">
+        <!--- For Name-->
+
+        <div class="row">
+            <div class="col-12">
+                 <label for="uname" class="form-label"><b>Nombre de usuario</b></label>
+                   
+                {{ form_widget(form.nombre,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="uname" class="form-label"><b>Apellidos</b></label>
+                
+                {{ form_widget(form.apellidos,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="uname" class="form-label"><b>Email</b></label>
+                
+                {{ form_widget(form.email,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="uname" class="form-label"><b>Password</b></label>
+                
+                    {{ form_widget(form.password,{ 'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-12">
+              <label for="uname" class="form-label"><b>Introduce un avatar</b></label>
+              
+              {{ form_widget(form.foto,{ 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <label for="uname" class="form-label"><b>Introduce el rol</b></label>
+              
+            {{ form_widget(form.roles) }}
+        </div>
+    </div>
+
+
+<!---For Phone number-->
+
+<div class="row">
+    <div class="col-12">
+        <label for="uname" class="form-label"><b>Introduce el telefono</b></label>
+        {{ form_row(form.telefono) }}
+    </div>
+</div>
+        </div>
+   <div class="row">
+        <div class="col-12">
+    {{ form_row(form.registrar, { 'label': 'Registrar' }) }}
+</div>
+
+</div>
+</div>
+
+
+
+{{ form_end(form) }}
+         
+        </div>
+    </div>
+{% endblock %}

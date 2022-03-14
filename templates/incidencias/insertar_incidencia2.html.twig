@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Incidencias{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Insertar Incidencia</h4>
+            {{ form_start(form) }}
+                {{ form_row(form.titulo) }}
+                {{ form_row(form.estado) }}
+                {{ form_row(form.cliente) }}
+                {{ form_row(form.insertar_incidencia, { 'label': 'Insertar incidencia' }) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+    </div>
+{% endblock %}

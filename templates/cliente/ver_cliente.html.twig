@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}Vista cliente{% endblock %}
+{% block body %}
+{{ parent() }}
+<h3 class="text-center mt-3">Visualizado del cliente</h3>
+<div class="container col-4 mt-4">
+    
+    <div class="card" style="color:black; height:auto;">
+        <div class="card-body">
+            <h4 class="card-title">Nombre</h4>
+            <p class="card-text">{{cliente.nombre}}</p>
+            <h4 class="card-title">Apellidos</h4>
+            <p class="card-text">{{cliente.apellidos}}</p>
+            <h4 class="card-title">Teléfono</h4>
+            <p class="card-text">{{cliente.telefono}}</p>
+            <h4 class="card-title">Dirección</h4>
+            <p class="card-text">{{cliente.direccion}}</p>
+            </div>
+    </div>
+    <h2 class="mt-2">Incidencias</h2><hr>
+    <div class="card " style="height: auto;">
+        <div class="card-body">
+            {% for incidencia in cliente.incidencias %}
+            <h4 class="card-title">Nombre de la incidencia: <a class="btn btn-dark" href="{{ path('ver_incidencia', {id:incidencia.id}) }}">{{incidencia.titulo}}</a></h4>
+            <p class="card-text"><a href="{{ path('borrar_incidencia', {id:incidencia.id}) }}" class="btn btn-danger ">Borrar Incidencia</a></p>
+            {% else %}
+                <p>No hay incidencias aún.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{{ path('insertar_incidencia_cliente', {id:cliente.id}) }}" class="btn btn-primary mt-2">Insertar incidencia</a>
+    <hr class="mt-3">
+    <a href="/cliente" class="btn btn-primary btn-block" role="button">Volver</a>
+    
+</div>
+{% endblock %}
